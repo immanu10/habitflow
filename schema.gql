@@ -1,0 +1,77 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthResult {
+  access_token: String!
+}
+
+type User {
+  id: Int!
+
+  """User email"""
+  email: String!
+  password: String!
+
+  """User Name"""
+  name: String
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Habit {
+  id: Int!
+
+  """Habit title"""
+  title: String!
+
+  """Habit description"""
+  description: String
+  isCompleted: Boolean!
+  createdAt: String!
+  updatedAt: String!
+  userId: Int!
+}
+
+type Query {
+  getMe: User!
+  getHabits: [Habit!]!
+  getHabitByID(id: Int!): Habit!
+}
+
+type Mutation {
+  signup(input: Auth!): AuthResult!
+  signin(input: Auth!): AuthResult!
+  editUser(input: UserEdit!): User!
+  create(input: HabitCreate!): Habit!
+  editHabitById(input: HabitEdit!, id: Int!): Habit!
+  deleteHabitById(id: Int!): Habit!
+}
+
+input Auth {
+  email: String!
+  password: String!
+}
+
+input UserEdit {
+  email: String
+
+  """User Name"""
+  name: String
+}
+
+input HabitCreate {
+  """Habit title"""
+  title: String!
+
+  """Habit Description"""
+  description: String
+}
+
+input HabitEdit {
+  """Habit title"""
+  title: String!
+
+  """Habit Description"""
+  description: String
+}
